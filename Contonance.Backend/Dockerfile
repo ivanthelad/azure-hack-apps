@@ -14,7 +14,7 @@ EXPOSE 8080
 ENV PORT=8080
 ENV ASPNETCORE_URLS=http://+:8080
 ENV ENTERPRISE_WAREHOUSE_BACKEND_URL=http://enterprise-warehouse-backend/api/message/receive
-ENV EventHub__EventHubName=events
+ENV EventHub__EventHubName=orders
 ## the following configs are required to be set 
 ENV ApplicationInsights__ConnectionString=
 ENV EventHub__EventHubConnectionString=
@@ -23,9 +23,9 @@ ENV AppConfiguration__ConnectionString=
 
 WORKDIR /app
 COPY --from=build /app ./
-COPY --from=build /source/Contonance.Backend/entrypoint.sh /entrypoint.sh
+#COPY --from=build /source/Contonance.Backend/entrypoint.sh /entrypoint.sh
 
-RUN chmod +x /entrypoint.sh
+#RUN chmod +x /entrypoint.sh
 # Use the startup script as the entry point
-ENTRYPOINT ["/entrypoint.sh"]
-#ENTRYPOINT ["dotnet", "Contonance.Backend.dll"]
+#ENTRYPOINT ["/entrypoint.sh"]
+ENTRYPOINT ["dotnet", "Contonance.Backend.dll"]

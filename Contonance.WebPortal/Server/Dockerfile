@@ -27,11 +27,11 @@ WORKDIR /app
 COPY --from=build /app ./
 
 
-COPY --from=build /source/Contonance.WebPortal/Server/entrypoint.sh /entrypoint.sh
-RUN chmod +x /entrypoint.sh
+#COPY --from=build /source/Contonance.WebPortal/Server/entrypoint.sh /entrypoint.sh
+#RUN chmod +x /entrypoint.sh
 # Use the startup script as the entry point
-ENTRYPOINT ["/entrypoint.sh"]
+#ENTRYPOINT ["/entrypoint.sh"]
 
 
-#ENTRYPOINT ["dotnet", "Contonance.WebPortal.Server.dll"]
+ENTRYPOINT ["dotnet", "Contonance.WebPortal.Server.dll"]
 

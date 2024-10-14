@@ -1,0 +1,16 @@
+version: v0.1
+testName: "SampleLoadTest"
+description: "Load test for GET URL"
+engineInstances: 1
+testDuration: "5m"
+loadProfile:
+  - loadType: "ramp"
+    start: 1
+    end: 10
+    duration: "2m"
+  - loadType: "constant"
+    value: 10
+    duration: "3m"
+requests:
+  - url: ""
+    method: "GET"

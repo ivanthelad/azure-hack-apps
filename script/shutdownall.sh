@@ -21,7 +21,7 @@ CONTAINER_APPS=$(az containerapp list  --query "[].name" -o tsv)
 ## Loop over the list of container apps and delete each one
 for app in $CONTAINER_APPS; do
   colored_echo "Shutting down container app: $app" 31
-  az containerapp delete --name "$app" --resource-group "$RESOURCE_GROUP" --yes
+  az containerapp stop --name "$app" --resource-group "$RESOURCE_GROUP" --yes
 done
 
 colored_echo "All container apps have been shut down." 32

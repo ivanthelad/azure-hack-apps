@@ -17,9 +17,9 @@ ENV ConnectionStrings__CosmosApi=
 ENV ApplicationInsights__ConnectionString=
 WORKDIR /app
 COPY --from=build /app ./
-COPY --from=build /source/EnterpriseWarehouse.Backend/entrypoint.sh /entrypoint.sh
+#COPY --from=build /source/EnterpriseWarehouse.Backend/entrypoint.sh /entrypoint.sh
 
-RUN chmod +x /entrypoint.sh
-ENTRYPOINT ["/entrypoint.sh"]
+#RUN chmod +x /entrypoint.sh
+#ENTRYPOINT ["/entrypoint.sh"]
 
-#ENTRYPOINT ["dotnet", "EnterpriseWarehouse.Backend.dll"]
+ENTRYPOINT ["dotnet", "EnterpriseWarehouse.Backend.dll"]
