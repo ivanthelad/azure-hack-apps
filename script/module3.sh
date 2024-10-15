@@ -47,9 +47,9 @@ az containerapp env create \
 
 ## 2D array containing image and container app name pairs
 declare -a container_apps=(
-  "acrazhasa1.azurecr.io/acacontonancebackend:v1 contonance-backend internal 8080"
-  "acrazhasa1.azurecr.io/acawarehouse:v1 enterprise-warehouse-backend external 8080"
-  "acrazhasa1.azurecr.io/acawebportal:v1 contonance-web-portal internal 8080"
+  "acrazhasa1.azurecr.io/acacontonancebackend:v5 contonance-backend internal 8080"
+  "acrazhasa1.azurecr.io/acawarehouse:v5 enterprise-warehouse-backend internal 8080"
+  "acrazhasa1.azurecr.io/acawebportal:v5 contonance-web-portal external 8080"
   # Add more pairs as needed
 )
 colored_echo "Retrieving ACR credentials" 32

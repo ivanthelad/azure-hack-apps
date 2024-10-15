@@ -12,6 +12,8 @@ print_env_vars() {
     colored_echo "RESOURCE_GROUP: $RESOURCE_GROUP" 35
     colored_echo "LOCATION: $LOCATION" 35
     colored_echo "ACR_NAME: $ACR_NAME" 35
+    colored_echo "APP_INSIGHTS_NAME: $APP_INSIGHTS_NAME" 35
+    colored_echo "LOG_ANALYTICS_WORKSPACE: $LOG_ANALYTICS_WORKSPACE" 35
 }
 
 
@@ -24,17 +26,18 @@ colored_echo " Getting app insights connection String " 32
 app_insights_connection_string=$(az monitor app-insights component show --app $APP_INSIGHTS_NAME --resource-group $RESOURCE_GROUP --query "connectionString" --output tsv)
 
 colored_echo " Set the webportal ApplicationInsights__ConnectionString env variables " 32
-
+colored_echo "Set the backendApplicationInsights__ConnectionString env variables "
 ## Set the webportal ApplicationInsights__ConnectionString env variables 
   az containerapp update \
     --name "contonance-web-portal" \
     --resource-group "$RESOURCE_GROUP" \
     --set-env-vars \
-      ApplicationInsights__ConnectionString="$event_hub_connection_string" 
+      ApplicationInsights__ConnectionString="$app_insights_connection_string" 
 
       colored_echo "Set the backendApplicationInsights__ConnectionString env variables " 32
 
 ## Set the backendApplicationInsights__ConnectionString env variables 
+
   az containerapp update \
     --name "contonance-backend" \
     --resource-group "$RESOURCE_GROUP" \

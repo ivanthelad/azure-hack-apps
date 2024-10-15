@@ -27,13 +27,13 @@ az acr update --name $ACR_NAME  --admin-enabled true
 ## 3. Build and push images to the Azure Container Registry
 cd ../
 colored_echo "Building and pushing image: acacontonancebackend:v1 to $ACR_NAME.azurecr.io" 32
-az acr build -t acacontonancebackend:v1 -r $ACR_NAME.azurecr.io --no-logs -f Contonance.Backend/Dockerfile .
+az acr build -t acacontonancebackend:v5 -r $ACR_NAME.azurecr.io --no-logs -f Contonance.Backend/Dockerfile .
 
 colored_echo "Building and pushing image: acawarehouse:v1 to $ACR_NAME.azurecr.io" 32
-az acr build -t acawarehouse:v1 -r $ACR_NAME.azurecr.io --no-logs -f EnterpriseWarehouse.Backend/Dockerfile .
+az acr build -t acawarehouse:v5 -r $ACR_NAME.azurecr.io --no-logs -f EnterpriseWarehouse.Backend/Dockerfile .
 
 colored_echo "Building and pushing image: acawebportal:v1 to $ACR_NAME.azurecr.io" 32
-az acr build -t acawebportal:v1 -r $ACR_NAME.azurecr.io --no-logs -f Contonance.WebPortal/Server/Dockerfile .
+az acr build -t acawebportal:v5 -r $ACR_NAME.azurecr.io --no-logs -f Contonance.WebPortal/Server/Dockerfile .
 cd script
 ## 4. List the images in the Azure Container Registry
 colored_echo "Listing images in Azure Container Registry: $ACR_NAME" 32
