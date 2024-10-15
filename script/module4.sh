@@ -72,7 +72,7 @@ export ConnectionStrings__CosmosApi=$cosmosdb_connection_string
     --set-env-vars \
       EventHub__EventHubConnectionString="$event_hub_connection_string" \
       EventHub__EventHubName="$EVENTHUB_NAME" \
-      EventHub__BlobConnectionString="$EventHub__BlobConnectionString"
+      EventHub__BlobConnectionString="$blob_connection_string"
 
 ## Set the backend env variables 
   az containerapp update \

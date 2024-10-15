@@ -47,13 +47,13 @@ az containerapp env create \
 
 ## 2D array containing image and container app name pairs
 declare -a container_apps=(
-  "acrazhasa1.azurecr.io/acacontonancebackend:v5 contonance-backend internal 8080"
-  "acrazhasa1.azurecr.io/acawarehouse:v5 enterprise-warehouse-backend internal 8080"
-  "acrazhasa1.azurecr.io/acawebportal:v5 contonance-web-portal external 8080"
+  "$ACR_NAME.azurecr.io/acacontonancebackend:v5 contonance-backend internal 8080"
+  "$ACR_NAME.azurecr.io/acawarehouse:v5 enterprise-warehouse-backend internal 8080"
+  "$ACR_NAME.azurecr.io/acawebportal:v5 contonance-web-portal external 8080"
   # Add more pairs as needed
 )
 colored_echo "Retrieving ACR credentials" 32
-ACR_CREDENTIALS=$(az acr credential show --name "$ACR_NAME" -o json)
+ACR_CREDENTIALS=$(az acr credential show --name "$ACR_NAME" -o json --only-show-errors )
 ACR_USERNAME=$(echo "$ACR_CREDENTIALS" | jq -r '.username')
 ACR_PASSWORD=$(echo "$ACR_CREDENTIALS" | jq -r '.passwords[0].value')
 ## Loop over the 2D array
